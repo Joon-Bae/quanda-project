@@ -3,8 +3,10 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
+import { Homepage } from './components/HomePage/homepageindex'
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage/splashpage";
+import NewQuestionForm from "./components/NewQuestionForm/questionformindex";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,8 +24,14 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path='/'>
-        <SplashPage/>
-      </Route>
+            <SplashPage/>
+          </Route>
+          <Route exact path='/home'>
+            <Homepage />
+          </Route>
+          <Route exact path='/questions/new'>
+            <NewQuestionForm />
+          </Route>
         </Switch>
       )}
     </>
