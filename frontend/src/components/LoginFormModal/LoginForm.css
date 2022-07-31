@@ -49,6 +49,11 @@ button {
     border: none;
     cursor: pointer;
     display: flex;
+    width: 70px;
+    height: 40px;
+    margin-right: 30px;
+    margin-top: 10px;
+    align-items: center;
 }
 
 .main-login-button:hover{
