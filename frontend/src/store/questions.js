@@ -3,15 +3,21 @@ import { csrfFetch } from './csrf'
 //ACTIONS
 const GET_ALL_QUESTIONS = 'questions/GET_ALL_QUESTIONS'
 const ADD_QUESTION = '/questions/ADD_QUESTION'
+const EDIT_QUESTION = '/questions/EDIT_QUESTION'
 
 //ACTION CREATORS
-const getAllQuestions = (questions) => ({
+export const getAllQuestions = (questions) => ({
     type: GET_ALL_QUESTIONS,
-    payload: questions
+    questions,
 })
-const addQuestion = (questions) => ({
+export const addQuestion = (question) => ({
     type: ADD_QUESTION,
-    payload: questions,
+    question,
+});
+
+export const editQuestion = (question) => ({
+    type: EDIT_QUESTION,
+    question,
 });
 
 //THUNKS
@@ -39,20 +45,30 @@ export const addQuestionThunk= (addedQuestion) => async(dispatch) => {
     }
 }
 
+export const editQuestionThunk = (formValues) => async(dispatch) => {
+    const { id } = formValues
+    const result = await csrfFetch(`/api/questions/${id}/edit`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(formValues)
+    })
+    if(result.ok) {
+        const editedQuestion = await result.json();
+        dispatch(editQuestion(editedQuestion))
+        return editedQuestion;
+    }
+}
+
 //REDUCER
 const initialState = {};
 function questionsReducer(state = initialState, action) {
     let newState = {}
     switch (action.type) {
         case GET_ALL_QUESTIONS: {
-            newState = {...state}
-            const questions = action.payload
-            if(questions.length > 0){
-                questions.map((question) => {
-                    newState[question.id] = question;
-                });
-            }
-            return newState;
+            const newState = {};
+			action.questions.forEach((question) => (newState[question.id] = question)
+			);
+			return newState;
         }
         // case GET_NOTEBOOKNOTES: {
         //     newState = { ...state }
@@ -72,6 +88,13 @@ function questionsReducer(state = initialState, action) {
              newState = {...state}
             const newQuestionId = action.payload.id
             newState[newQuestionId] = action.payload
+            return newState;
+            // return { ...state, [action.question.id]: action.question };
+        }
+        case EDIT_QUESTION: {
+            newState= { ...state }
+            const editId = action.payload.id
+            newState[editId] = action.payload
             return newState;
         }
         // case DELETE_NOTEBOOK: {

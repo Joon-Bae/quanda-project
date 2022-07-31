@@ -7,11 +7,6 @@ const router = express.Router();
 router.get('/', asyncHandler(async(req, res) => {
     // const userId = req.params.userId;
     const questions = await Question.findAll()
-        // {
-    //     // where: { userId: userId },
-    //     where: { id },
-    //     order: [["updatedAt", "DESC"]],
-    //
     return res.json(questions)
 }))
 
@@ -47,6 +42,36 @@ router.post('/new', asyncHandler(async(req, res) => {
     })
     return res.json(createdQuestion)
 }))
+
+//EDIT A QUESTION
+router.put(
+    '/:id/edit',
+    asyncHandler(async (req, res) => {
+        const {
+            userId,
+            id,
+            title,
+            description,
+        } = req.body
+
+        // console.log(note, "hello joon")
+
+        const editedQuestion = await Question.update(
+            {
+                userId,
+                id,
+                title,
+                description
+            },
+            {
+                where: { id },
+            }
+            )
+        const question = await Question.findByPk(id)
+        return res.json(question);
+        // return res.send(':)')
+    })
+    );
 
 // //DELETE A NOTEBOOK
 // router.delete(

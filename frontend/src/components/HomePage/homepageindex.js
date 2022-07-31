@@ -53,7 +53,7 @@ export const Homepage = () => {
                         return (
                             <NavLink key={`${question?.id}`} to={`/questions/${question?.id}`}>
                                 <div>
-                                    {userId === question.userId ? question.title: null}
+                                    {question.title}
                                 </div>
                             </NavLink>
                         )
