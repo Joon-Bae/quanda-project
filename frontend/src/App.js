@@ -9,6 +9,7 @@ import SplashPage from "./components/SplashPage/splashpage";
 import NewQuestionForm from "./components/NewQuestionForm/questionformindex";
 import EditQuestionForm from "./components/EditQuestion/editquestionindex";
 import Question from "./components/Questions/questionsindex";
+import Answer from "./components/Answers/answersindex";
 import NewAnswerForm from "./components/NewAnswerForm/newanswerindex";
 
 function App() {
@@ -41,8 +42,11 @@ function App() {
           <Route exact path='/questions/:id/edit'>
             <EditQuestionForm />
           </Route>
-          <Route exact path='/answers/new'>
+          <Route exact path='/questions/:questionId/answer/new'>
             <NewAnswerForm />
+          </Route>
+          <Route exact path='/answers/:id'>
+            <Answer />
           </Route>
         </Switch>
       )}

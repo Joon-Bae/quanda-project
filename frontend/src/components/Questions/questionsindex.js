@@ -39,7 +39,7 @@ const deleteUserQuestion = (e) => {
 const sendtoNewAnswerForm =(e) => {
 	e.preventDefault();
 	e.stopPropagation();
-	history.push('/answers/new')
+	history.push(`/questions/${id}/answer/new`)
 }
 
 if (!userId) {

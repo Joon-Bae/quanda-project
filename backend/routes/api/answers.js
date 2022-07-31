@@ -25,4 +25,16 @@ router.post('/new', asyncHandler(async(req, res) => {
     return res.json(createdAnswer)
 }))
 
+//DELETE ANSWER
+router.delete('/:id',
+asyncHandler(async(req, res) => {
+const id = req.params.id;
+const answer = await Answer.findByPk(id)
+
+await answer.destroy();
+
+return res.json(Answer)
+})
+);
+
 module.exports = router;

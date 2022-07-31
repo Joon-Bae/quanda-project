@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf'
 //ACTIONS
 const GET_ANSWERS = 'answers/GET_ANSWERS'
 const POST_ANSWER = 'answers/POST_ANSWER'
+const DELETE_ANSWER = 'answers/DELETE_ANSWER'
 
 //ACTION CREATORS
 export const getAnswers = (answers) => ({
@@ -12,6 +13,11 @@ export const getAnswers = (answers) => ({
 
 export const postAnswer = (answer) => ({
     type: POST_ANSWER,
+    answer
+})
+
+export const deleteAnswer = (answer) => ({
+    type: DELETE_ANSWER,
     answer
 })
 
@@ -40,6 +46,17 @@ export const postAnswerThunk= (addedAnswer) => async(dispatch) => {
     }
 }
 
+export const deleteAnswerThunk = (id) => async(dispatch) => {
+    const res = await csrfFetch(`/api/answers/${id}`, {
+        method: 'DELETE'
+    });
+
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(deleteAnswer(data));
+    }
+}
+
 
 
 //REDUCER
@@ -60,6 +77,12 @@ function answersReducer(state = initialState, action) {
            return newState;
            // return { ...state, [action.question.id]: action.question };
        }
+       case DELETE_ANSWER: {
+        newState = { ...state };
+        const deletedId = action.payload.id
+        delete newState[`${deletedId}`];
+        return newState;
+    }
         default:
             return state;
     }

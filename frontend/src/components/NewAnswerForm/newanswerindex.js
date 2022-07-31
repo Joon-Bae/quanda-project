@@ -6,8 +6,8 @@ import { postAnswerThunk } from '../../store/answers'
 
 function NewAnswerForm() {
     const dispatch = useDispatch();
+    const { questionId } = useParams()
     const userId = useSelector((state) => state?.session?.user?.id)
-    const questionId = useSelector((state) => state?.session?.question?.id)
     const [answer, setAnswer] = useState("")
     const [errors, setErrors] = useState([]);
     const history = useHistory();
