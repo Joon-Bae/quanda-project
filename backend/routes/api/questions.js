@@ -73,18 +73,17 @@ router.put(
     })
     );
 
-// //DELETE A NOTEBOOK
-// router.delete(
-//     "/:notebookId",
-//     asyncHandler(async (req, res) => {
-//       const notebookId = req.params.notebookId;
+// //DELETE A QUESTION
+router.delete('/:id',
+asyncHandler(async(req, res) => {
+const id = req.params.id;
+const question = await Question.findByPk(id)
 
-//       const notebook = await NoteBook.findByPk(notebookId);
-//       console.log(notebook, "this is what we want to delete")
-//       await notebook.destroy();
-//       return res.json(notebook);
-//     })
-//   );;
+await question.destroy();
+
+return res.json(question)
+})
+);
 
 
 module.exports = router;

@@ -4,6 +4,7 @@ import { csrfFetch } from './csrf'
 const GET_ALL_QUESTIONS = 'questions/GET_ALL_QUESTIONS'
 const ADD_QUESTION = '/questions/ADD_QUESTION'
 const EDIT_QUESTION = '/questions/EDIT_QUESTION'
+const DELETE_QUESTION = '/questions/DELETE_QUESTION'
 
 //ACTION CREATORS
 export const getAllQuestions = (questions) => ({
@@ -19,6 +20,11 @@ export const editQuestion = (question) => ({
     type: EDIT_QUESTION,
     question,
 });
+
+export const deleteQuestion = (question) => ({
+    type: DELETE_QUESTION,
+    question
+})
 
 //THUNKS
 export const getAllQuestionsThunk = () => async(dispatch) => {
@@ -59,6 +65,19 @@ export const editQuestionThunk = (formValues) => async(dispatch) => {
     }
 }
 
+export const deleteQuestionThunk = (id) => async(dispatch) => {
+    const res = await csrfFetch(`/api/questions/${id}`, {
+        method: 'DELETE'
+    });
+
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(deleteQuestion(data));
+    }
+}
+
+
+
 //REDUCER
 const initialState = {};
 function questionsReducer(state = initialState, action) {
@@ -70,20 +89,7 @@ function questionsReducer(state = initialState, action) {
 			);
 			return newState;
         }
-        // case GET_NOTEBOOKNOTES: {
-        //     newState = { ...state }
-        //     const notes = action.payload
-        //     // const id = action.payload.id
-        //     newState['notes'] = notes
-        //     return newState;
-        // }
-        // case GET_NOTEBOOK: {
-        //     newState = { ...state }
-        //     const notebook = action.payload
-        //     const id = action.payload.id
-        //     newState[id] = notebook
-        //     return newState;
-        // }
+
         case ADD_QUESTION: {
              newState = {...state}
             const newQuestionId = action.payload.id
@@ -97,13 +103,12 @@ function questionsReducer(state = initialState, action) {
             newState[editId] = action.payload
             return newState;
         }
-        // case DELETE_NOTEBOOK: {
-        //     newState = { ...state };
-        //     const deletedId = action.payload.id
-        //     console.log(newState[`${deletedId}`])
-        //     delete newState[`${deletedId}`];
-        //     return newState;
-        // }
+        case DELETE_QUESTION: {
+            newState = { ...state };
+            const deletedId = action.payload.id
+            delete newState[`${deletedId}`];
+            return newState;
+        }
         default:
             return state;
     }

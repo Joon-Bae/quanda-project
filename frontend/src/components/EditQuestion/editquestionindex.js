@@ -16,7 +16,7 @@ function EditQuestionForm() {
     // const oneNote = useSelector((state) => state.note)
     // console.log(note)
     const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    const [description, setDescription] = useState();
     const [errors, setErrors] = useState([]);
     const history = useHistory();
 
@@ -38,13 +38,7 @@ function EditQuestionForm() {
             title, //joon
             description
         }
-        // dispatch(editNote(formValues))
-        // console.log(formValues)
-        // history.push('/')
-
-        // function submitEdit(e){
-        //     e.preventDefault();
-
+       
         dispatch(editQuestionThunk(formValues))
         history.push(`/home`)
 
