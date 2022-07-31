@@ -10,6 +10,8 @@ const Question = () => {
     const history = useHistory()
     const { id } = useParams();
     const question = useSelector(state => state?.question[`${id}`])
+	const sessionUser = useSelector((state) => state?.session.user)
+
 
 const editUserQuestion = (e) => {
 	e.preventDefault();
@@ -26,7 +28,9 @@ const deleteUserQuestion = (e) => {
 }
 
 return (
-	<div>
+	<div className='editform-container'>
+		{sessionUser.id === question.userId ? (
+		<div className='editdelete-btns'>
 		<h1>{question.title}</h1>
 		<p>{question.description}</p>
 		<button onClick={(e)=> editUserQuestion(e)}>
@@ -34,6 +38,13 @@ return (
 		<button onClick={(e) => deleteUserQuestion(e)}>
 			Delete Note
 		</button>
+		</div>
+		) : (
+			<span>
+				<h1>{question.title}</h1>
+				<p>{question.description}</p>
+			</span>
+		)}
 	</div>
 )
 
