@@ -10,17 +10,6 @@ router.get('/', asyncHandler(async(req, res) => {
     return res.json(questions)
 }))
 
-// //get all notes for specific notebook
-// router.get('/:notebookId/notes', asyncHandler(async(req,res) => {
-//     const notebookId = req.params.notebookId;
-
-//     const notes = await Note.findAll ({
-//         where: { notebookId: notebookId },
-//         order: [["updatedAt", "DESC"],]
-//     });
-//     console.log(notes)
-//     return res.json(notes)
-// }))
 
 //get one specific question
 router.get('/:questionId', asyncHandler(async(req, res) => {
@@ -53,8 +42,6 @@ router.put(
             title,
             description,
         } = req.body
-
-        // console.log(note, "hello joon")
 
         const editedQuestion = await Question.update(
             {

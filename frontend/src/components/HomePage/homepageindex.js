@@ -8,28 +8,18 @@ import { getAllQuestionsThunk } from "../../store/questions";
 export const Homepage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const notebookId = useSelector(state => state?.session?.notebook?.id)
     const userId = useSelector(state=> state?.session?.user?.id)
-    // const userId = useSelector((state) => state.session.user.id)
-    // const userNotes = useSelector((state) => Object.values(state.note))
     const userQuestions = useSelector((state) => Object.values(state.question))
     const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         if (userId) {
             dispatch(getAllQuestionsThunk())
-            // dispatch(getNotebooksThunk(userId))
             setIsLoaded(true)
         }
     }, [dispatch, isLoaded])
 
 
-    // const sendToNewNoteForm = (e) => {
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    //     //change 1 later to be notebookId when notebook is created
-    //     history.push(`/notebooks/1/note/new`)
-    // }
 
     const sendToNewQuestionForm = (e) => {
         e.preventDefault();

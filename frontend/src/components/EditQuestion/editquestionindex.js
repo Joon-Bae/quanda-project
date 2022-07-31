@@ -10,11 +10,8 @@ function EditQuestionForm() {
 
     const dispatch = useDispatch();
     const { id } = useParams();
-    // console.log("**************", useParams())
     const userId = useSelector((state) => state?.session?.user?.id)
     const question = useSelector((state) => state?.question[id])
-    // const oneNote = useSelector((state) => state.note)
-    // console.log(note)
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState();
     const [errors, setErrors] = useState([]);
@@ -38,7 +35,7 @@ function EditQuestionForm() {
             title, //joon
             description
         }
-       
+
         dispatch(editQuestionThunk(formValues))
         history.push(`/home`)
 

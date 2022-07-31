@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { editQuestion } from '../../store/questions';
 import { deleteQuestionThunk } from '../../store/questions';
+import { getAllQuestionsThunk } from '../../store/questions';
 import './questions.css'
 
 const Question = () => {
@@ -12,7 +13,9 @@ const Question = () => {
     const question = useSelector(state => state?.question[`${id}`])
 	const sessionUser = useSelector((state) => state?.session.user)
 	const userId = useSelector(state=> state?.session?.user?.id)
-
+	const [title, setTitle] = useState('');
+    const [description, setDescription] = useState();
+	const [isLoaded, setIsLoaded] = useState(false)
 
 const editUserQuestion = (e) => {
 	e.preventDefault();
