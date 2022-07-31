@@ -8,6 +8,8 @@ const Answer = () => {
     const dispatch = useDispatch();
     const history = useHistory()
     const { id } = useParams();
+    const sessionUser = useSelector((state) => state?.session.user)
+    const answer = useSelector((state) => state?.answer[`${id}`])
 
     const deleteUserAnswer = (e) => {
         e.preventDefault();
@@ -18,10 +20,18 @@ const Answer = () => {
 
     return (
         <div className='answer-delete-button'>
-            <h2> Would you like to delete this answer?</h2>
-            <button onClick={(e) => deleteUserAnswer(e)}>
-                Delete Answer
-            </button>
+         {sessionUser.id === answer.userId ? (
+		<div className='deletequestion-btn'>
+		<h1>{answer.answer}</h1>
+		<button onClick={(e) => deleteAnswerThunk(e)}>
+			Delete Answer
+		</button>
+		</div>
+		) : (
+			<span>
+				<h1>{answer.answer}</h1>
+			</span>
+		)}
         </div>
         )
 }
