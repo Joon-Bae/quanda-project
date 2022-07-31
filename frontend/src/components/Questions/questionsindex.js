@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { editQuestion } from '../../store/questions';
 import { deleteQuestionThunk } from '../../store/questions';
 import './questions.css'
@@ -11,6 +11,7 @@ const Question = () => {
     const { id } = useParams();
     const question = useSelector(state => state?.question[`${id}`])
 	const sessionUser = useSelector((state) => state?.session.user)
+	const userId = useSelector(state=> state?.session?.user?.id)
 
 
 const editUserQuestion = (e) => {
@@ -24,7 +25,10 @@ const deleteUserQuestion = (e) => {
     e.stopPropagation();
     dispatch(deleteQuestionThunk(id))
     history.push(`/home`)
+}
 
+if (!userId) {
+	return null;
 }
 
 return (
