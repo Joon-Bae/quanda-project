@@ -1,12 +1,12 @@
 import { csrfFetch } from './csrf'
 
 //ACTIONS
-const GET_QUESTIONS = 'questions/GET_QUESTIONS'
+const GET_ALL_QUESTIONS = 'questions/GET_ALL_QUESTIONS'
 const ADD_QUESTION = '/questions/ADD_QUESTION'
 
 //ACTION CREATORS
-const getQuestions = (questions) => ({
-    type: GET_QUESTIONS,
+const getAllQuestions = (questions) => ({
+    type: GET_ALL_QUESTIONS,
     payload: questions
 })
 const addQuestion = (questions) => ({
@@ -15,12 +15,12 @@ const addQuestion = (questions) => ({
 });
 
 //THUNKS
-export const getQuestionsThunk = (userId) => async(dispatch) => {
-    const res = await fetch(`/api/questions/${userId}`);
+export const getAllQuestionsThunk = () => async(dispatch) => {
+    const res = await fetch(`/api/questions/`);
 
     if (res.ok) {
         const allQuestions= await res.json();
-        dispatch(getQuestions(allQuestions));
+        dispatch(getAllQuestions(allQuestions));
         return allQuestions;
     }
 }
@@ -44,11 +44,11 @@ const initialState = {};
 function questionsReducer(state = initialState, action) {
     let newState = {}
     switch (action.type) {
-        case GET_QUESTIONS: {
+        case GET_ALL_QUESTIONS: {
             newState = {...state}
             const questions = action.payload
             if(questions.length > 0){
-                questions.forEach((question) => {
+                questions.map((question) => {
                     newState[question.id] = question;
                 });
             }

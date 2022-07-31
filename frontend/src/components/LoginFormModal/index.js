@@ -1,26 +1,30 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
 import LoginForm from './LoginForm';
 import * as sessionActions from '../../store/session'
 import './LoginForm.css'
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 function LoginFormModal() {
+
   const history = useHistory();
   const dispatch = useDispatch();
-
+  const user = useSelector((state) => state?.session?.user);
   const [showModal, setShowModal] = useState(false);
   const [credential, setCredential] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = (e) => {
+  if (user) {
+    return <Redirect to="/home" />;
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // setErrors([]);
-    // setCredential('FakeUser1')
-    // setPassword('password2')
+    setCredential('FakeUser1')
+    setPassword('password2')
     dispatch(sessionActions.login({ credential:'FakeUser1', password:'password2' }))
-    return history.push("/home")
   };
 
   return (

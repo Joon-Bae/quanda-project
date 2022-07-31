@@ -3,13 +3,15 @@ const asyncHandler = require("express-async-handler");
 const { Question, Answer } = require("../../db/models");
 const router = express.Router();
 
-//get all questions for specific user
-router.get('/:userId', asyncHandler(async(req, res) => {
-    const userId = req.params.userId;
-    const questions = await Question.findAll({
-        where: { userId: userId },
-        order: [["updatedAt", "DESC"]],
-    })
+//get all questions for every user
+router.get('/', asyncHandler(async(req, res) => {
+    // const userId = req.params.userId;
+    const questions = await Question.findAll()
+        // {
+    //     // where: { userId: userId },
+    //     where: { id },
+    //     order: [["updatedAt", "DESC"]],
+    //
     return res.json(questions)
 }))
 
@@ -25,7 +27,7 @@ router.get('/:userId', asyncHandler(async(req, res) => {
 //     return res.json(notes)
 // }))
 
-//get one specific notebook
+//get one specific question
 router.get('/:questionId', asyncHandler(async(req, res) => {
     const questionId = req.params.questionId
 
@@ -33,7 +35,7 @@ router.get('/:questionId', asyncHandler(async(req, res) => {
     return res.json(question)
 }))
 
-//CREATE A NOTEBOOK
+//CREATE A QUESTION
 router.post('/new', asyncHandler(async(req, res) => {
     const { userId, title, description } = req.body;
     const createdQuestion = await Question.create({

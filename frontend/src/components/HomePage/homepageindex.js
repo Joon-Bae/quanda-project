@@ -2,7 +2,7 @@ import "./homepage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { NavLink, useHistory, useParams } from "react-router-dom";
-import { getQuestionsThunk } from "../../store/questions";
+import { getAllQuestionsThunk } from "../../store/questions";
 
 
 export const Homepage = () => {
@@ -17,11 +17,11 @@ export const Homepage = () => {
 
     useEffect(() => {
         if (userId) {
-            dispatch(getQuestionsThunk(userId))
+            dispatch(getAllQuestionsThunk())
             // dispatch(getNotebooksThunk(userId))
             setIsLoaded(true)
         }
-    }, [dispatch, isLoaded, userId])
+    }, [dispatch, isLoaded])
 
 
     // const sendToNewNoteForm = (e) => {

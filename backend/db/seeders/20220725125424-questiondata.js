@@ -29,6 +29,20 @@ module.exports = {
       description:"I want to start learning Korean but I don't know where to start",
       createdAt: new Date(),
       updatedAt: new Date()
+    },
+    {
+      userId:1,
+      title:"What do my feet get hot at night?",
+      description:"I can't sleep sometimes",
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      userId:3,
+      title:"What is the most anticipated video game this year?",
+      description:"I am bored and need something to play",
+      createdAt: new Date(),
+      updatedAt: new Date()
     }
    ], {});
   },
