@@ -4,15 +4,25 @@ const { Question, Answer } = require("../../db/models");
 const router = express.Router();
 
 //GET ALL ANSWERS FOR SPECIFIC QUESTION
-router.get('/', asyncHandler(async(req, res) => {
-    const questionId = req.params.id
-    const answers = await Answer.findAll(
-        {
-            where: {
-                questionId
-            }
-        }
-    )
+router.get('/:questionId', asyncHandler(async(req, res) => {
+    const questionId = req.params.questionId
+    const answers = await Answer.findAll({
+        where:{ questionId : questionId}
+    })
     return res.json(answers)
 }))
+
+//POST ANSWER
+router.post('/new', asyncHandler(async(req, res) => {
+    const { userId, questionId, answer } = req.body;
+    const createdAnswer = await Answer.create({
+        userId: userId,
+        questionId: questionId,
+        answer: answer,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    })
+    return res.json(createdAnswer)
+}))
+
 module.exports = router;

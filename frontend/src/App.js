@@ -9,6 +9,7 @@ import SplashPage from "./components/SplashPage/splashpage";
 import NewQuestionForm from "./components/NewQuestionForm/questionformindex";
 import EditQuestionForm from "./components/EditQuestion/editquestionindex";
 import Question from "./components/Questions/questionsindex";
+import NewAnswerForm from "./components/NewAnswerForm/newanswerindex";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route exact path='/questions/:id/edit'>
             <EditQuestionForm />
+          </Route>
+          <Route exact path='/answers/new'>
+            <NewAnswerForm />
           </Route>
         </Switch>
       )}
