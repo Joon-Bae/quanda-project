@@ -20,32 +20,37 @@ function LoginForm() {
   };
 
   return (
+    <div className='loginFormModal'>
     <form onSubmit={handleSubmit}>
+      <h1 className='loginTitle'>Log in to Quanda</h1>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <label>
-        Username or Email
+      <div>
         <input
+          className='loginInput'
           type="text"
+          placeholder="Username or Email"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Password
+      </div>
+      <div>
         <input
+          className="loginInput"
           type="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </label>
-      <button type="submit">Log In</button>
+      </div>
+      <button className="login-btn" type="submit">Log In</button>
     </form>
+    </div>
   );
 }
 

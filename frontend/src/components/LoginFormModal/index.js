@@ -36,6 +36,7 @@ function LoginFormModal() {
       <Modal onClose={() => setShowModal(false)}>
         <LoginForm />
         <div id='demo-login-modal'>
+        
         <button type='submit' className='demo-login-button' onClick={(e) => handleSubmit(e)}>Log In As Demo User</button>
         </div>
       </Modal>
