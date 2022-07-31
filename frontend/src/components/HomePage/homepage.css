@@ -1,1 +1,49 @@
+.homepage-component {
+    background-color: aliceblue;
+    height: 1060px;
+    display:flex;
+    align-items: center;
+}
 
+.addquestion-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: -420px;;
+    border-radius: 8px;
+    height:60px;
+    width:140px;
+    margin-left: 1500px;
+    background-color: teal;
+    box-shadow: 2px 3px 8px #9095A1;
+    border: 1px solid skyblue
+}
+
+.addquestion-btn:hover {
+    cursor:pointer;
+    font-size: 14px;
+    background-color: dodgerblue;
+	color: white;
+    border: 1px solid skyblue;
+    height:60px;
+    width: 140px;
+	border-radius: 8px;
+	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.questionsList {
+    background-color: white;
+    border-radius: 1em;
+    box-shadow: 0 0 8px #9095A1;
+    padding: 1em;
+    margin-bottom: 2em;
+    margin-left: -1000px;
+    margin-right:300px;
+    font-size: 30px;
+}
+
+.newsfeed {
+    margin-left:-810px;
+    margin-top: -20px;
+}

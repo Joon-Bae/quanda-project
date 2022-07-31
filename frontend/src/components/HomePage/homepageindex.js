@@ -32,17 +32,20 @@ export const Homepage = () => {
     }
     else if (isLoaded){
         return (
-            <div>
+            <div className='homepage-component'>
                 <div className='add-questions'>
-                    <button onClick={(e) => sendToNewQuestionForm(e)}>
+                    <button className='addquestion-btn'onClick={(e) => sendToNewQuestionForm(e)}>
                         Ask Your Question!
                     </button>
                 </div>
                 <div className='user-questions'>
+                    <div className='newsfeed'>
+                    <h1>See What others are asking!</h1>
+                    </div>
                     {userQuestions?.length > 0 ? userQuestions?.map((question) => {
                         return (
                             <NavLink key={`${question?.id}`} to={`/questions/${question?.id}`}>
-                                <div>
+                                <div className='questionsList'>
                                     {question.title}
                                 </div>
                             </NavLink>
