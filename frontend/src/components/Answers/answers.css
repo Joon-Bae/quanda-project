@@ -1,0 +1,57 @@
+.delete-page {
+    background-color: aliceblue;
+    height: 1060px;
+    display:flex;
+    align-items: center;
+}
+
+.delete-page-container {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;;
+    margin-top:-200px;
+    box-shadow: 2px 3px 8px #9095A1;
+    height: 200px;
+    width: 500px;
+    margin-left: 800px;
+}
+
+.answer-show {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-left: 50px;
+}
+
+.deleteanswer-btn {
+    color: white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    height:50px;
+    width:100px;
+    margin-left: 20px;
+    background-color: teal;
+    box-shadow: 2px 3px 8px #9095A1;
+    border: 1px solid skyblue;
+    margin-left: 185px;
+}
+
+.deleteanswer-btn:hover{
+    font-size: 14px;
+    cursor:pointer;
+    background-color: dodgerblue;
+	color: white;
+    border: 1px solid skyblue;
+    height:50px;
+    width: 100px;
+	border-radius: 8px;
+	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.nodelete-answer {
+    margin-left:20px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+
+}

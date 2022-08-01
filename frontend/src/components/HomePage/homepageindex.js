@@ -40,7 +40,7 @@ export const Homepage = () => {
                 </div>
                 <div className='user-questions'>
                     <div className='newsfeed'>
-                    <h1>See What others are asking!</h1>
+                    <h1>See what others are asking!</h1>
                     </div>
                     {userQuestions?.length > 0 ? userQuestions?.map((question) => {
                         return (

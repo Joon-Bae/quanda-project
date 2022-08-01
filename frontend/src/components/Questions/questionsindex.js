@@ -47,32 +47,35 @@ if (!userId) {
 }
 
 return (
-	<div className='editform-container'>
+		<div className='edit-form-page'>
+		<div className='editform-container'>
 		{sessionUser.id === question.userId ? (
-		<div className='editdelete-btns'>
-		<h1>{question.title}</h1>
-		<p>{question.description}</p>
-		<button onClick={(e)=> editUserQuestion(e)}>
+		<div>
+		<h1 className='question-title'>{question.title}</h1>
+		<p className='question-description'>{question.description}</p>
+		<div className='editdelete-question-container'>
+		<button className='editquestion-btn' onClick={(e)=> editUserQuestion(e)}>
 			Edit Question</button>
-		<button onClick={(e) => deleteUserQuestion(e)}>
+		<button className='deletequestion-btn'onClick={(e) => deleteUserQuestion(e)}>
 			Delete Question
 		</button>
 		</div>
+		</div>
 		) : (
 			<span>
-				<h1>{question.title}</h1>
-				<p>{question.description}</p>
+				<h1 className='question-title'>{question.title}</h1>
+				<p className='question-description'>{question.description}</p>
 			</span>
 		)}
 		<div className='answers-container'>
-		<button onClick={(e) => sendtoNewAnswerForm(e)}>
+		<button className='provide-answer'onClick={(e) => sendtoNewAnswerForm(e)}>
 			Provide an Answer!
 		</button>
-		<div className='user-questions'>
+		<div className='user-answers'>
                     {userAnswers?.length > 0 ? userAnswers?.map((answer) => {
                         return (
                             <NavLink key={`${answer?.id}`} to={`/answers/${answer?.id}`}>
-                                <div>
+                                <div className='answersList'>
                                     {answer.answer}
                                 </div>
                             </NavLink>
@@ -81,6 +84,7 @@ return (
                     }): <h1>No Answers Currently</h1> }
                 </div>
 		</div>
+	</div>
 	</div>
 )
 

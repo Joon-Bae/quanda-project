@@ -1,6 +1,6 @@
 .homepage-component {
     background-color: aliceblue;
-    height: 1060px;
+    height: 1400px;
     display:flex;
     align-items: center;
 }
@@ -10,8 +10,8 @@
     justify-content: center;
     align-items: center;
     color: white;
-    margin-top: -420px;;
-    border-radius: 8px;
+    margin-top: -580px;;
+    border-radius:8px;
     height:60px;
     width:140px;
     margin-left: 1500px;
@@ -44,6 +44,6 @@
 }
 
 .newsfeed {
-    margin-left:-810px;
-    margin-top: -20px;
+    margin-left:-840px;
+    margin-top: -300px;
 }

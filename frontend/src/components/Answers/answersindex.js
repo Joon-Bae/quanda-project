@@ -10,6 +10,7 @@ const Answer = () => {
     const { id } = useParams();
     const sessionUser = useSelector((state) => state?.session.user)
     const answer = useSelector((state) => state?.answer[`${id}`])
+    const userId = useSelector((state) => state?.session?.user?.id)
 
     const deleteUserAnswer = (e) => {
         e.preventDefault();
@@ -19,21 +20,25 @@ const Answer = () => {
     }
 
     return (
-        <div className='answer-delete-button'>
+        <div className='delete-page'>
+        <div className='delete-page-container'>
          {sessionUser.id === answer.userId ? (
-		<div className='deletequestion-btn'>
-		<h1>{answer.answer}</h1>
-		<button onClick={(e) => deleteAnswerThunk(e)}>
+		<div>
+		<h1 className='answer-show'>Do you want to delete this answer?</h1>
+		<button className='deleteanswer-btn' onClick={(e) => deleteUserAnswer(e)}>
 			Delete Answer
 		</button>
 		</div>
 		) : (
 			<span>
-				<h1>{answer.answer}</h1>
+				<h1 className='nodelete-answer'>{answer.answer}</h1>
 			</span>
 		)}
         </div>
-        )
+        </div>
+        
+
+    )
 }
 
 

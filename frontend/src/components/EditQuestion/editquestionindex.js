@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { editQuestionThunk } from '../../store/questions'
 import { getAllQuestionsThunk } from '../../store/questions'
+import './editquestion.css'
 
 
 
@@ -43,11 +44,12 @@ function EditQuestionForm() {
 
 
     return (
+        <div className='edit-question-container'>
         <form
             className="edit-question-form"
             onSubmit={handleSubmit}
         >
-            <h2>Edit Question</h2>
+            <h2 className='edit-text'>Edit Question</h2>
             <ul className="errors">
                 {
                     errors.map(error => (
@@ -55,22 +57,25 @@ function EditQuestionForm() {
                     ))
                 }
             </ul>
-            <label>
-                Title
+            <div >
                 <input
+                    className='editquestion-input'
                     type="text"
                     name="title"
+                    placeholder='Enter New Title'
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
-            </label>
+            </div>
             <button
+                className='question-submit-edit-btn'
                 type="submit"
                 disabled={errors.length > 0}
                 >
                 Edit Question
             </button>
         </form>
+        </div>
     );
 }
 
