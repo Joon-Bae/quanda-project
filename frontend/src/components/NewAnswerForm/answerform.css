@@ -27,3 +27,29 @@
     width:300px;
     overflow: auto
 }
+
+.submitanswer-btn {
+    color: white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    height:50px;
+    width:100px;
+    margin-left: 20px;
+    background-color: teal;
+    box-shadow: 2px 3px 8px #9095A1;
+    border: 1px solid skyblue
+}
+
+.submitanswer-btn:hover {
+    font-size: 14px;
+    cursor:pointer;
+    background-color: dodgerblue;
+	color: white;
+    border: 1px solid skyblue;
+    height:50px;
+    width: 100px;
+	border-radius: 8px;
+	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}

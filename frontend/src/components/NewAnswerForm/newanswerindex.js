@@ -57,6 +57,7 @@ function NewAnswerForm() {
                 />
             </div>
             <button
+                className='submitanswer-btn'
                 type="submit"
                 disabled={errors.length > 0}
                 onClick={(e) => handleSubmit(e)}
