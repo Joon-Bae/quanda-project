@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { postAnswerThunk } from '../../store/answers'
+import './answerform.css'
 
 
 function NewAnswerForm() {
@@ -32,11 +33,12 @@ function NewAnswerForm() {
     }
 
     return (
+        <div className='new-answer-page'>
         <form
             className="answers-form"
             onSubmit={handleSubmit}
         >
-            <h2>Submit An Answer</h2>
+            <h2 className='submit-prompt'>Submit An Answer</h2>
             <ul className="errors">
                 {
                     errors.map(error => (
@@ -44,15 +46,16 @@ function NewAnswerForm() {
                     ))
                 }
             </ul>
-            <label>
-                Answer
+            <div>
                 <input
+                    className='new-answer-input'
                     type="text"
+                    placeholder='Provide an answer'
                     name="answer"
                     value={answer}
                     onChange={(e) => setAnswer(e.target.value)}
                 />
-            </label>
+            </div>
             <button
                 type="submit"
                 disabled={errors.length > 0}
@@ -61,6 +64,7 @@ function NewAnswerForm() {
                 Submit This Answer
             </button>
         </form>
+        </div>
     );
 }
 

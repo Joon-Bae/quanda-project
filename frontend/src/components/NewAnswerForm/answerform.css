@@ -1,0 +1,29 @@
+.new-answer-page {
+    background-color: aliceblue;
+    height: 1060px;
+    display:flex;
+    align-items: center;
+}
+
+.answers-form {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;;
+    margin-top: 0px;
+    box-shadow: 2px 3px 8px #9095A1;
+    height: 400px;
+    width: 400px;
+    margin-left: 800px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.submit-prompt {
+    margin-top: -10px;
+}
+
+.new-answer-input {
+    height:200px;
+    width:300px;
+    overflow: auto
+}
