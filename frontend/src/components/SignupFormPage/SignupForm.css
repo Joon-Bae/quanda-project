@@ -27,7 +27,7 @@
 }
 
 
-.imputField {
+.inputField {
 	border: none;
     font-size: 15px;
 	border-bottom: 0.1em solid black;
@@ -38,7 +38,7 @@
 	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.imputField:focus {
+.inputField:focus {
 	border: none;
 	outline: none;
 	border-bottom: 0.1em solid black;
@@ -64,7 +64,7 @@
 
 .signup-btn:hover {
     font-size: 14px;
-    background-color: dodgerblue;
+    background-color: blue;
 	color: white;
     border: 1px solid skyblue;
     height:50px;

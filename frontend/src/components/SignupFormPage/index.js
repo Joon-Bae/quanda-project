@@ -40,7 +40,7 @@ function SignupFormPage() {
       <h2 className='signupform-title'>Sign up for Quanda</h2>
       <div>
         <input
-          className='imputField'
+          className='inputField'
           placeholder="Email"
           type="text"
           value={email}
@@ -50,7 +50,7 @@ function SignupFormPage() {
       </div>
       <div>
         <input
-          className='imputField'
+          className='inputField'
           type="text"
           placeholder="Username"
           value={username}
