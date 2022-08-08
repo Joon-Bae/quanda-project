@@ -30,10 +30,10 @@
     align-items: center;
     border-radius: 8px;
     height:50px;
-    width:100px;
+    width:150px;
     margin-left: 20px;
     background-color: teal;
-    box-shadow: 2px 3px 8px #9095A1;
+    box-shadow: 2px 3px 10px #9095A1;
     border: 1px solid skyblue;
     margin-left: 185px;
 }
@@ -45,13 +45,13 @@
 	color: white;
     border: 1px solid skyblue;
     height:50px;
-    width: 100px;
+    width: 120px;
 	border-radius: 8px;
 	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 .nodelete-answer {
-    margin-left:20px;
+    margin-left:22px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 
 }
